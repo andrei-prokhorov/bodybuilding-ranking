@@ -52,6 +52,8 @@ Precision@k metric gives the fraction of correct predictions among top 5 competi
 
 
 ### Multielo probability
+![multielo_prob](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/eb00e20f-5e63-41c0-b45f-993c7de7f798)
+
 
 ## Observations
 1. We had to adjust starting elo rating for competitors without amateur data.
