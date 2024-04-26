@@ -29,6 +29,12 @@ We used [multielo](https://github.com/djcunningham0/multielo) package. This is g
 ### NDCG score
 
 ### Precision@k
+![Elo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/18994d41-d42b-4d9a-8a4a-0be676c16d14)
+![Adjusted elo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/e3e883c7-e415-4ff8-90f1-7604898db088)
+![multielo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/e02ef0f8-c142-4463-a062-bee4f21334b9)
+![truescale](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/9dab4501-fd83-449e-a500-345748fa268b)
+
+
 
 ### Multielo probability
 
