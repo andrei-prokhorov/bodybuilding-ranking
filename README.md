@@ -35,16 +35,20 @@ We used [multielo](https://github.com/djcunningham0/multielo) package. This is g
 ![multielo_kt](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/17d30738-aa78-4b67-aefd-a6c28419b747)
 ![elo_kt](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/de5946c5-025f-4c75-a981-3b8ea247b8fa)
 
-### NDCG score
-
 ### Precision@k
 
 Precision@k metric gives the fraction of correct predictions among top 5 competitors in the competition. Below are the plots of 30 day rolling averages of this metric for IFBB organization, bikini division, open class. Orange graphs correspond to the random choice of the ranking.
+
 ![Elo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/18994d41-d42b-4d9a-8a4a-0be676c16d14)
 ![Adjusted elo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/e3e883c7-e415-4ff8-90f1-7604898db088)
 ![multielo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/e02ef0f8-c142-4463-a062-bee4f21334b9)
 ![truescale](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/9dab4501-fd83-449e-a500-345748fa268b)
 
+### NDCG score
+![multielo_ndcg](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/2e1ccce9-aced-406d-aaae-a2395710d122)
+![truescale_ndcg](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/f938dc2d-cf66-409b-a8ba-f09a0e78240a)
+![elo_ndcg](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/cdd706d6-30f9-47c5-b4f1-fdf04aa7e04a)
+![adjusted elo ndcg](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/526d7f5d-d875-4e19-822b-a13f3bd95f25)
 
 
 ### Multielo probability
