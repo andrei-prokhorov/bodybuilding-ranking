@@ -16,6 +16,9 @@ Using *BeautifulSoup*, we scraped the results of bodybuilding competitions start
 ### Elo
 We used the [Elopy](https://pypi.org/project/elopy/) package. It is designed for 1v1 competitions so, we paired all the competitors artificially and assumed that all these pairs compete independently. It is important to put hca(home court advantage) parameter to zero, since we didn't have the location data for competitors and we need the probabilities of win of two competitors to sum up to 1. We used the default valuee of parameter k=20. It seemed like changing it didn't produce significant improvement to the performance. 
 <img width="1038" alt="Screenshot 2024-04-26 at 2 56 14 PM" src="https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/accc7b0c-1443-4df0-a565-a9413255a87d">
+### Adjusted Elo
+We modified the starting Elo rating for the competitors without amateur data. We put different number for different divisions based on the Elo ratings of the athletes when their earned their Pro card.
+![Starting Elo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/1af4a48e-9959-49f7-a40e-837ba34c9779)
 ### Truescale
 We used [truescale](https://trueskill.org) package. This ranking system is designed for the multiplayer games and is used by Xbox Live. It produced similar performance to the Elo rating.
 <img width="1034" alt="Screenshot 2024-04-26 at 2 59 49 PM" src="https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/f818ecff-6373-434d-b66f-f39e68604dd4">
