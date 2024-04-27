@@ -16,34 +16,35 @@ Using the *BeautifulSoup* Python package, we scraped the results of bodybuilding
 ## Models
 
 ### Elo rating
-We used the [Elopy](https://pypi.org/project/elopy/) package. It is designed for 1v1 competitions so, we paired all the competitors artificially and assumed that all these pairs compete independently. It is important to put hca(home court advantage) parameter to zero, since we didn't have the location data for competitors and we need the probabilities of win of two competitors to sum up to 1. We used the default valuee of parameter k=20. It seemed like changing it didn't produce significant improvement to the performance. 
+Using the [Elopy](https://pypi.org/project/elopy/) Python package, we measured each competitor's skill using the Elo rating model and their historical competition performance. This model is designed for 1v1 match-ups, however, bodybuilding competitions are 1v1v1v...v1 so, we paired all the competitors artificially and assumed that all these pairs compete independently. The starting Elo rating for all new competitors was set to 1500 in this particular model. Since we do not have data regarding the home countries of competitors nor the locations of the competitions, we set the home court advantage (HCA) parameter to zero. The k-factor parameter influences how quickly the Elo rating changes after a new competition occurs. Varying the k parameter did not produce significant improvement in the performance of our rankings, so we used the default value of 20.
+
 <img width="1038" alt="Screenshot 2024-04-26 at 2 56 14 PM" src="https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/accc7b0c-1443-4df0-a565-a9413255a87d">
 
 ### Adjusted Elo rating
-We modified the starting Elo rating for the competitors without amateur data. We put different number for different divisions based on the Elo ratings of the athletes when their earned their Pro card.
+In this adjusted Elo rating model, we modified the starting Elo rating for the competitors for whom we did not have any amateur data. The starting Elo rating for a pro was calculated by the average Elo ratings of competitors in the same division for whom we do have amateur data immediately after winning a pro card.
 
 ![Starting Elo](https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/1af4a48e-9959-49f7-a40e-837ba34c9779)
 
-### Truescale rating
-We used [truescale](https://trueskill.org) package. This ranking system is designed for the multiplayer games and is used by Xbox Live. It produced similar performance to the Elo rating.
-
-<img width="1034" alt="Screenshot 2024-04-26 at 2 59 49 PM" src="https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/f818ecff-6373-434d-b66f-f39e68604dd4">
-
 ### Multi-Elo rating
-We used [multielo](https://github.com/djcunningham0/multielo) package. This is generalization of Elo ranking to multiplayer games. It can produce the probability of given ranking.
+The [multielo](https://github.com/djcunningham0/multielo) Python package implements a multi-player extension of the Elo rating system. This model can produce the probability of a given ranking.
 
 <img width="1154" alt="Screenshot 2024-04-26 at 3 01 39 PM" src="https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/ddeb17c3-b7cd-4c80-84b5-e95ce42d6e12">
+
+### Truescale rating
+The TrueSkill ranking system is a skill-based ranking system for Xbox Live developed at Microsoft Research. This ranking system allows us to model 1v1v1v...v1 competitions. We implemented this ranking system using the [truescale](https://trueskill.org) Python package.
+
+<img width="1034" alt="Screenshot 2024-04-26 at 2 59 49 PM" src="https://github.com/jessicadesilva/bodybuilding-ranking/assets/158493309/f818ecff-6373-434d-b66f-f39e68604dd4">
 
 ## Key Performance Indicators
 
 ### Kendall-tau correlation coefficient
-[Kendall-tau correlation coefficient](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html#scipy.stats.kendalltau) is the metric for the prediction of raning of competitors. It is proportional to the difference between correctly predicted placings and incorrectly guessed placings. It tends to zero for the random guessing.  Below are the plots of 30 day rolling averages of this metric for IFBB organization, bikini division, open class. Orange graphs correspond to the random choice of the ranking.
+The [Kendall-tau correlation coefficient](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html#scipy.stats.kendalltau) measures the similarity between a predicted ranking and the actual ranking. It is proportional to the "difference" between correctly and incorrectly predicted rankings, where difference is measured by the number of pairwise inversions required to obtain the actual ranking from the prediction. This metric tends to zero for a random ranking, and a perfect or reversed ranking gives a value of 1 and -1, respectively.  Below is a plot comparing our models according to the 30-day rolling averages of this metric for the IFBB organization, bikini division, open class competitions. We see that all models presented here produce nearly the same results.
 
 ![image](https://github.com/jessicadesilva/bodybuilding-ranking/assets/74026509/90947980-0123-46ac-9f27-70b4ba84879d)
 
 ### Precision@k (k=5)
 
-Precision@k metric with k=5 gives the fraction of correct predictions among top 5 competitors in the competition. Below are the plots of 30 day rolling averages of this metric for IFBB organization, bikini division, open class. Orange graphs correspond to the random choice of the ranking.
+Precision@k metric with k=5 gives the fraction of correct predictions among the top 5 competitors in the competition. As with the Kendall Tau Correlation Coefficient, the performances of the models presented here are similar with respect to this metric.
 
 ![image](https://github.com/jessicadesilva/bodybuilding-ranking/assets/74026509/a14fe74c-e10a-4b65-bd98-5456d56cf61a)
 
