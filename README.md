@@ -38,7 +38,7 @@ The TrueSkill ranking system is a skill-based ranking system for Xbox Live devel
 ## Key Performance Indicators
 
 ### Kendall-tau correlation coefficient
-The [Kendall-tau correlation coefficient](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html#scipy.stats.kendalltau) measures the similarity between a predicted ranking and the actual ranking. It is proportional to the "difference" between correctly and incorrectly predicted rankings, where difference is measured by the number of pairwise inversions required to obtain the actual ranking from the prediction. This metric tends to zero for a random ranking, and a perfect or reversed ranking gives a value of 1 and -1, respectively.  Below is a plot comparing our models according to the 30-day rolling averages of this metric for the IFBB organization, bikini division, open class competitions. We see that all models presented here produce nearly the same results.
+The [Kendall-tau correlation coefficient](https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.kendalltau.html#scipy.stats.kendalltau) measures the similarity between a predicted ranking and the actual ranking. It is proportional to the "difference" between correctly and incorrectly predicted rankings, where the "difference" is measured by the number of pairwise inversions required to obtain the actual ranking from the prediction. This metric tends to zero for a random ranking, and a perfect or reversed ranking gives a value of 1 and -1, respectively.  Below is a plot comparing our models according to the 30-day rolling averages of this metric for the IFBB organization, bikini division, open class competitions. We see that all models presented here produce nearly the same results.
 
 ![image](https://github.com/jessicadesilva/bodybuilding-ranking/assets/74026509/90947980-0123-46ac-9f27-70b4ba84879d)
 
@@ -49,15 +49,7 @@ Precision@k metric with k=5 gives the fraction of correct predictions among the 
 ![image](https://github.com/jessicadesilva/bodybuilding-ranking/assets/74026509/a14fe74c-e10a-4b65-bd98-5456d56cf61a)
 
 ## Observations
-1. We had to adjust starting elo rating for competitors without amateur data.
-2. NPC athletes compete significantly less often than professional athletes.
-3. We ranked the division's competetiveness.
-4. We observed that majority of top Mr Olympia winners earned their PRO card at the US competition. 
-
-## Future work
-Get additional data by scraping
-1. Scorecards photos
-2. Athlete's photos.
+Elo ratings performed well for IFBB competitions, however, its accuracy is significantly lower in amateur competitions. Due to the large number of amateur competitions, often held in proximity to competitors' residences, amateur competitors tend to concentrate their efforts within confined geographical regions. Consequently, the most skilled amateurs often avoid direct competition with each other, except at pro-card qualifying events. This localized competition dynamic can result in lower Elo ratings and reduced accuracy compared to IFBB competitions. For a similar reason, we see that professional competitors who concentrate their efforts on competitions outside of the United States tend to have relatively lower Elo ratings as well.
 
 
 
